@@ -1,0 +1,6 @@
+site_id,region,consumption_tier,restock_cycle_days
+North_01,North,high,45
+North_02,North,medium,60
+South_01,South,high,45
+Central_01,Central,medium,55
+East_01,East,low,60
