@@ -18,6 +18,10 @@ def Inspect_data(df):
     print("\nData Types")     #This returns what are the current data types if each of the column 
     print(df.dtypes)
 
+    print("\nData Shape")     #This returns how many rows and column are there in the dataset
+    print(df.shape)
+
+
 
 #loading all my datasets
 
