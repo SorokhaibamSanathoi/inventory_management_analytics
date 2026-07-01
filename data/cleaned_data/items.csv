@@ -1,0 +1,11 @@
+item_id,item_name,category,unit,supplier_lead_time_days
+ITM-01,Drinking Water Jar (20L),Beverage - Water,jar,1
+ITM-02,Coffee Beans,Beverage - Coffee,kg,6
+ITM-03,Milk,Beverage - Dairy,litre,1
+ITM-04,Regular Tea Sachets,Beverage - Tea,box,4
+ITM-05,Green Tea Sachets,Beverage - Tea,box,4
+ITM-06,Lemon Tea Sachets,Beverage - Tea,box,4
+ITM-07,Cardamom Tea Sachets,Beverage - Tea,box,4
+ITM-08,Masala Tea Sachets,Beverage - Tea,box,4
+ITM-09,Sugar Sachets,Consumable,box,3
+ITM-10,Stirrers,Consumable,packet,3
