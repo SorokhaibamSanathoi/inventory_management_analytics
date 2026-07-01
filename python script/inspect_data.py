@@ -32,3 +32,4 @@ Restock = pd.read_csv("data//raw_csv files//site_stock_restocks.csv")
 Client = pd.read_csv("data//raw_csv files//clients.csv")
 
 Inspect_data(Daily)
+Inspect_data(Items)
