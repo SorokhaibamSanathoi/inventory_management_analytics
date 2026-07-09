@@ -93,4 +93,9 @@ emergency_restock = emergency_restock.merge(
     Items[["item_id","item_name"]],
     on = "item_id"
 )
+emergency_restock.columns = ["item_id","emergency_count","item_name"]
 print(emergency_restock)
+
+# =====================================================
+
+# =====================================================
