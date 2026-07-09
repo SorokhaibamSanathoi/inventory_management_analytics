@@ -1,24 +1,75 @@
-#EDA  which item has the highest consumtion rate 
+"""
+Exploratory Data Analysis (EDA)
 
-# this return the list of item from highest consumtion to lowest
+Project:
+Inventory Management Analytics
+
+Objective:
+Answer key business questions using Pandas to understand
+inventory consumption patterns before performing advanced
+analysis in SQL and creating dashboards in Power BI.
+"""
+
 import pandas as pd
+
+# =====================================================
+# Load Cleaned Datasets
+# =====================================================
+
 Daily_usage = pd.read_csv("data/cleaned_data/daily_usage.csv")
 Items = pd.read_csv("data/cleaned_data/items.csv")
 
-# # item_consumtion = Daily_usage.groupby("item_id")["qty_drawn"].sum()
-# # print(item_consumtion.sort_values(ascending = False))
 
+# =====================================================
+# Business Question 1:
+# Which inventory item has the highest total consumption?
+# =====================================================
 
-# #This group by item id and sum up the qty drawn to see which item is being consume the most
 # item_consumption = Daily_usage.groupby("item_id")["qty_drawn"].sum().reset_index()
-# item_consumption.columns = ["item_id","total_qty_drawn"]
+# item_consumption.columns = ["item_id", "total_qty_drawn"]
 
-# item_consumption = item_consumption.merge(Items[["item_id","item_name","unit"]],on="item_id")
-# item_consumption = item_consumption.sort_values("total_qty_drawn",ascending = False)
+# # Attach item details to make the output easier to understand.
+# item_consumption = item_consumption.merge(
+#     Items[["item_id", "item_name", "unit"]],
+#     on="item_id"
+# )
+
+# item_consumption = item_consumption.sort_values(
+#     "total_qty_drawn",
+#     ascending=False
+# )
+
 # print(item_consumption)
 
-#2nd eda which site consume the most items ?
 
-total_item_consumed = (Daily_usage.groupby("site_id")["qty_drawn"].sum().reset_index())
-total_item_consumed.columns = ["site_id","total_qty_drawn"]
-print(total_item_consumed.sort_values("total_qty_drawn", ascending=False))
+# =====================================================
+# Business Question 2:
+# Which site has the highest total inventory consumption?
+# =====================================================
+
+# total_item_consumed = Daily_usage.groupby("site_id")["qty_drawn"].sum().reset_index()
+# total_item_consumed.columns = ["site_id", "total_qty_drawn"]
+
+# print(total_item_consumed.sort_values("total_qty_drawn", ascending=False))
+
+
+# =====================================================
+# Business Question 3:
+# Which month records the highest inventory consumption?
+# =====================================================
+
+# # Extract the month from the transaction date for monthly analysis.
+# Daily_usage["date"] = pd.to_datetime(Daily_usage["date"])
+# Daily_usage["month"] = Daily_usage["date"].dt.month_name()
+
+# monthly_consumption = Daily_usage.groupby("month")["qty_drawn"].sum().reset_index()
+# monthly_consumption.columns = ["month", "total_qty_drawn"]
+
+# print(monthly_consumption.sort_values("total_qty_drawn", ascending=False))
+
+
+# =====================================================
+# Business Question 4:
+# Which number of restock per client and name of the item that cause the restock 
+# =====================================================
+
