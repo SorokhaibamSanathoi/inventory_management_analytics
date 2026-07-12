@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS
+CREATE SCHEMA IF NOT EXISTS;
 inventory_management_analytics
 
 -- ============================================
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS inventory_management_analytics.Items (
     item_id TEXT,
     item_name TEXT,
     category TEXT,
+    unit TEXT, 
     supplier_lead_time_days INTEGER
 );
 
@@ -66,22 +67,25 @@ CREATE TABLE IF NOT EXISTS inventory_management_analytics.Daily_usage (
     is_outlier BOOLEAN
 );
 
+-- Replace /your/file/path/ with the absolute path to your cleaned_data folder
+
 COPY  inventory_management_analytics.Sites
-FROM 'D:\senpai personal folder\inventory_management_analytics\data\cleaned_data\sites.csv'
+FROM '/your/file/path/sites.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 
 COPY  inventory_management_analytics.Items
-FROM 'D:\senpai personal folder\inventory_management_analytics\data\cleaned_data\items.csv'
+FROM '/your/file/path/items.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 
 COPY  inventory_management_analytics.Clients
-FROM 'D:\senpai personal folder\inventory_management_analytics\data\cleaned_data\client.csv'
+FROM '/your/file/path/client.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 
 COPY  inventory_management_analytics.Restock
-FROM 'D:\senpai personal folder\inventory_management_analytics\data\cleaned_data\restock.csv'
+FROM '/your/file/path/restock.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 
 COPY  inventory_management_analytics.Daily_usage
-FROM 'D:\senpai personal folder\inventory_management_analytics\data\cleaned_data\daily_usage.csv'
+FROM '/your/file/path/daily_usage.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
+
