@@ -67,6 +67,16 @@ CREATE TABLE IF NOT EXISTS inventory_management_analytics.Daily_usage (
     is_outlier BOOLEAN
 );
 
+-- ============================================
+-- Opening Stock
+-- ============================================
+
+CREATE TABLE IF NOT EXISTS inventory_management_analytics.opening_stock (
+    site_id TEXT,
+    item_id TEXT,
+    opening_stock INTEGER,
+    opening_date DATE
+);
 -- Replace /your/file/path/ with the absolute path to your cleaned_data folder
 
 COPY  inventory_management_analytics.Sites
@@ -89,3 +99,6 @@ COPY  inventory_management_analytics.Daily_usage
 FROM '/your/file/path/daily_usage.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 
+COPY inventory_management_analytics.opening_stock
+FROM '/your/file/path/opening_stock.csv'
+WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
