@@ -102,3 +102,4 @@ WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
 COPY inventory_management_analytics.opening_stock
 FROM '/your/file/path/opening_stock.csv'
 WITH (FORMAT csv, HEADER true, ENCODING 'utf8');
+
