@@ -1,10 +1,11 @@
 # Importing already loaded datafram from load_data.py file
 
-from Load_data import Daily
+from Load_data import Daily, Opening
 from Load_data import Restock
 from Load_data import Sites
 from Load_data import Items
 from Load_data import Client
+from Load_data import Opening
 
 import pandas as pd
 
@@ -20,7 +21,7 @@ Daily["qty_drawn"] = Daily["qty_drawn"].astype(int)
 #changing columns format for Restock dataframe 
 
 Restock["date"] = pd.to_datetime(Restock["date"])
-Restock["qty"] = Restock["qty"].astype(int)
+Restock["qty"] = Restock["qty"].astype(float)
 
 # print(Restock.info())
 
@@ -55,3 +56,4 @@ Sites.to_csv("data/cleaned_data/sites.csv", index= False)
 Client.to_csv("data/cleaned_data/client.csv", index= False)
 Restock.to_csv("data/cleaned_data/restock.csv", index= False)
 Items.to_csv("data/cleaned_data/items.csv", index= False)
+Opening.to_csv("data/cleaned_data/opening_stock.csv", index= False)
