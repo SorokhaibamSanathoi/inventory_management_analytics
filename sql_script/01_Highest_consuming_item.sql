@@ -16,3 +16,6 @@ GROUP BY
     i.item_name,
     i.category
 ORDER BY total_qty_drawn DESC;
+
+
+
