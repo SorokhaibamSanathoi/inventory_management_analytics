@@ -11,7 +11,7 @@ FROM inventory_management_analytics.restock AS r
 JOIN inventory_management_analytics.items AS i
     ON r.item_id = i.item_id
 WHERE r.restock_type = 'emergency'
-GROUP BY ROLLUP(r.site_id, r.item_id, i.item_name)
+GROUP BY (r.site_id, r.item_id, i.item_name)
 ORDER BY
     COUNT(r.restock_id) DESC;
 
