@@ -8,8 +8,16 @@
 
 --combined all inventory movements (restock and consumption) into a single timeline for each item at each site.
 
-WITH Unified_timeline AS(
---Posive movement (restock) 
+WITH unified_timeline AS(
+    SELECT
+        site_id,
+        item_id,
+        opening_date AS movement_date,
+        opening_stock AS movement_qty
+    FROM inventory_management_analytics.opening_stock
+
+    UNION ALL
+
     SELECT
         site_id,
         item_id,
@@ -19,7 +27,6 @@ WITH Unified_timeline AS(
 
     UNION ALL
 
---negative movement (consumption)
     SELECT
         site_id,
         item_id,
@@ -29,19 +36,17 @@ WITH Unified_timeline AS(
     WHERE is_outlier = 'FALSE'
 )
 SELECT
-    t.site_id,
-    t.item_id,
-    t.movement_date,
-    o.opening_stock AS opening_stock,
-    t.movement_qty AS movement_qty,
-    ( COALESCE(o.opening_stock, 0)
-     + SUM(t.movement_qty) OVER (PARTITION BY t.site_id, t.item_id 
-     ORDER BY t.movement_date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) ) AS balance_stock
-FROM Unified_timeline t
-LEFT JOIN inventory_management_analytics.opening_stock o
-    ON t.site_id = o.site_id AND t.item_id = o.item_id
-WHERE t.item_id = 'ITM-03' AND t.site_id = 'North_01'
-ORDER BY t.movement_date
-
-LIMIT 30;
- 
+    site_id,
+    item_id,
+    movement_date,
+    movement_qty,
+    SUM(movement_qty) OVER(
+        PARTITION BY site_id,item_id
+        ORDER BY movement_date,
+        CASE
+            WHEN movement_qty > 0 THEN 0 
+            ELSE 1 
+            END
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+    ) AS balance_stock
+FROM unified_timeline
