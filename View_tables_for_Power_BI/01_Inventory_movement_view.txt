@@ -1,0 +1,9 @@
+CREATE VIEW IF NOT EXISTS inventory_management_analytics.inventory_movement AS(
+    SELECT
+        d.date AS date,
+        d.site_id,
+        i.item_name
+    FROM inventory_management_analytics.daily_usage d
+    INNER JOIN inventory_management_analytics.items i
+    ON d.item_id = i.item_id
+)
