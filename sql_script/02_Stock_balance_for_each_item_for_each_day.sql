@@ -8,15 +8,6 @@
 
 --combined all inventory movements (restock and consumption) into a single timeline for each item at each site.
 
---✅ 3. Stock Status 
---This joins:
---Current stock
---Consumption
---and calculates things like:
---Current stock
---Safety stock
---Days remaining
---Overstock / Low Stock
 
 WITH unified_timeline AS(
     SELECT
