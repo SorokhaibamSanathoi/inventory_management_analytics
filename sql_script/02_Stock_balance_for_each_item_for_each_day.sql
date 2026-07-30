@@ -61,5 +61,5 @@ SELECT
 FROM unified_timeline u
 LEFT JOIN inventory_management_analytics.items i 
 ON u.item_id = i.item_id
-LIMIT 50;
+
 

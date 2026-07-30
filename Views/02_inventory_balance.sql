@@ -56,7 +56,6 @@ SELECT
     ) AS balance_stock,
 
     u.movement_type,
-git 
     i.item_name,
     i.category,
     i.unit
