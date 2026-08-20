@@ -53,6 +53,7 @@ has the highest consumption rate compared to others.
 * Out of the 5 sites only North-01 and South-01 require emergency restock.
 * Surprisingly, one tea variant requires more emergency restock than other high consumption items.
 
+ 📌 Code: 👉 [View EDA Script](python%20script/eda_script.py)
 ## SQL Analysis
 #### 6 queries built across the full analysis pipeline:
 
