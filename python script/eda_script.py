@@ -25,21 +25,21 @@ Restock = pd.read_csv("data/cleaned_data/restock.csv")
 # Which inventory item has the highest total consumption?
 # =====================================================
 
-# item_consumption = Daily_usage.groupby("item_id")["qty_drawn"].sum().reset_index()
-# item_consumption.columns = ["item_id", "total_qty_drawn"]
+item_consumption = Daily_usage.groupby("item_id")["qty_drawn"].sum().reset_index()
+item_consumption.columns = ["item_id", "total_qty_drawn"]
 
-# # Attach item details to make the output easier to understand.
-# item_consumption = item_consumption.merge(
-#     Items[["item_id", "item_name", "unit"]],
-#     on="item_id"
-# )
+# Attach item details to make the output easier to understand.
+item_consumption = item_consumption.merge(
+    Items[["item_id", "item_name", "unit"]],
+    on="item_id"
+)
 
-# item_consumption = item_consumption.sort_values(
-#     "total_qty_drawn",
-#     ascending=False
-# )
+item_consumption = item_consumption.sort_values(
+    "total_qty_drawn",
+    ascending=False
+)
 
-# print(item_consumption)
+print(item_consumption)
 
 
 # =====================================================

@@ -16,4 +16,4 @@ CREATE VIEW inventory_management_analytics.monthly_restock AS
         r.site_id,
         r.item_id,
         i.item_name,
-        r.restock_type
+        r.restock_type;
